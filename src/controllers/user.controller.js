@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import bcrypt from "bcrypt";
 
 export async function signUp(req, res) {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
     try {
         const user = await db.collection("users").findOne({ email });
@@ -11,7 +11,7 @@ export async function signUp(req, res) {
 
         const hash = bcrypt.hashSync(password, 10);
 
-        await db.collection("users").insertOne({ email, password: hash });
+        await db.collection("users").insertOne({ name, email, password: hash });
         res.status(201).send("Usuário cadastrado com sucesso");
     } catch (err) {
         res.status(500).send(err.message);
@@ -29,7 +29,7 @@ export async function signIn(req, res) {
         if (!passwordIsCorrect) return res.status(401).send("Senha incorreta");
 
         const token = uuid();
-        await db.collection("sessions").insertOne({ token, userId: user._id });
+        await db.collection("sessions").insertOne({ token, userId: user._id, userName: user.name });
         res.send(token);
     } catch (err) {
         res.status(500).send(err.message);

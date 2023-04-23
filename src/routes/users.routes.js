@@ -7,7 +7,4 @@ const usersRouter = Router();
 usersRouter.post("/cadastro", validateSchema(userSchema), signUp);
 usersRouter.post("/login", validateSchema(userSchema), signIn);
 
-//usersRouter.use(authValidation)
-//usersRouter.get("/user", authValidation, homePage)
-
 export default usersRouter;
