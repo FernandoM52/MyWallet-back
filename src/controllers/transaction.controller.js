@@ -4,21 +4,15 @@ import dayjs from "dayjs";
 const date = dayjs().format("DD/MM");
 
 export async function newTransaction(req, res) {
-    const { value, description } = req.body;
-    const { tipo } = req.params;
+    const { value, description, type } = req.body;
+
+    const newTransaction = { value, description, type, date }
 
     try {
         const { session } = res.locals;
 
-        if (tipo === "entrada") {
-            const transaction = await db.collection("transactions").insertOne({ userId: session.userId, type: tipo, date, ...req.body });
-            res.send("Transação efetuada com sucesso!");
-        } else if (tipo === "saida") {
-            const transaction = await db.collection("transactions").insertOne({ userId: session.userId, type: tipo, date, ...req.body });
-            res.send("Transação efetuada com sucesso!");
-        } else {
-            return res.status(422).send("Tipo de transação inválida");
-        }
+        await db.collection("transactions").insertOne({ ...newTransaction, userId: session.userId });
+        res.status(200).send({ message: "Transação efetuada com sucesso!" });
     } catch (err) {
         res.status(500).send(err.message);
     }

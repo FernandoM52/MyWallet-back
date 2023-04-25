@@ -6,7 +6,7 @@ import { getTransactionsByUser, newTransaction } from "../controllers/transactio
 
 const transactionsRouter = Router();
 transactionsRouter.use(authValidation);
-transactionsRouter.post("/nova-transacao/:tipo", validateSchema(transactionSchema), newTransaction);
+transactionsRouter.post("/transaction", validateSchema(transactionSchema), newTransaction);
 transactionsRouter.get("/home", getTransactionsByUser);
 
 export default transactionsRouter;
