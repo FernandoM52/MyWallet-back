@@ -8,7 +8,7 @@ export async function signUp(req, res) {
 
     try {
         const user = await db.collection("users").findOne({ email });
-        if (user) return res.status(409).send("E-mail já cadastrado, preencha um e-mail disponível");
+        if (user) return res.status(409).send({ message: "E-mail já cadastrado, preencha um e-mail disponível" });
 
         const hash = bcrypt.hashSync(password, 10);
 
@@ -24,10 +24,10 @@ export async function signIn(req, res) {
 
     try {
         const user = await db.collection("users").findOne({ email });
-        if (!user) return res.status(404).send("E-mail não cadastrado");
+        if (!user) return res.status(404).send({ message: "E-mail não cadastrado" });
 
         const passwordIsCorrect = bcrypt.compareSync(password, user.password);
-        if (!passwordIsCorrect) return res.status(401).send("Senha incorreta");
+        if (!passwordIsCorrect) return res.status(401).send({ message: "Senha incorreta" });
 
         const token = uuid();
         await db.collection("sessions").insertOne({ token, userId: user._id, name: user.name });
@@ -42,7 +42,7 @@ export async function signOut(req, res) {
         const { session } = res.locals;
 
         const result = await db.collection("sessions").findOneAndDelete({ userId: new ObjectId(session.userId) });
-        if (result.deletedCount === 0) return res.status(404).send("Erro ao fazer logoff");
+        if (result.deletedCount === 0) return res.status(404).send({ message: "Erro ao fazer logoff" });
         res.send("Usuário deslogado com sucesso");
     } catch (err) {
         res.status(500).send(err.message);
