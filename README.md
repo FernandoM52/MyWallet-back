@@ -9,7 +9,7 @@ My Wallet is a finance manager that simplifies control of your revenues and expe
 
 ## About this Project
 
-My Wallet is a web application to help individuals efficiently manage their finances. With this app, users can effortlessly gain insights into their spending habits, track their income and expenses, and maintain a real-time balance overview. Whether you're looking to gain a better understanding of your financial choices or simply stay on top of your financial health, My Wallet provides the tools and insights you need.
+My Wallet is a API web to help individuals efficiently manage their finances. With this app, users can effortlessly gain insights into their spending habits, track their income and expenses, and maintain a real-time balance overview. Whether you're looking to gain a better understanding of your financial choices or simply stay on top of your financial health, My Wallet provides the tools and insights you need.
 
 Implemented features:
 - Sign Up
