@@ -50,6 +50,17 @@ The following technologies were used to develop this project:
 
 This api has a front-end, if you are interested in running the api together with the front you can find all the instructions to start the front <a href="https://github.com/FernandoM52/MyWallet-front" target="_blank">here<a/>.
 
+1. Clone this repository and instal the dependencies:
+
+```
+git clone https://github.com/FernandoM52/MyWallet-back.git
+
+cd MyWallet-back
+
+npm i
+```
+
+
 <h3>Running</h3>
 
 1. Create a `/.env` file and add the environment variable `DATABASE_URL` with the address of your localhost, like this:
