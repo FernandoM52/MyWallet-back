@@ -25,6 +25,8 @@ Next steps:
 
 ## Why
 
+I've often looked for apps so I could manage my expenses and know exactly how much I spend on a certain type of thing, basically controlling my hard-earned money, but I've never been successful. So, with that in mind, I came up with the idea of ​​making my own finance management app!
+
 My Wallet was my first Full-Stack project. It was also my second project using a non-relational database, which was a topic I was studying at the time and for that I found the choice of MongoDB interesting.
 
 So, I'm very grateful to made it and share this project, hope be very useful to you. Enjoy! 
