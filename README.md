@@ -22,6 +22,7 @@ Implemented features:
 Next steps:
 - Edit an transaction
 - Delete an transaction
+- Tests implementation
 
 ## Why
 
